@@ -1,0 +1,37 @@
+
+.react-calendar {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  .react-calendar__tile {
+    background: none !important;
+    padding: 2vh !important; 
+    color: black !important; 
+
+  }
+  
+  .react-calendar__navigation button {
+    background: none !important;
+    border: none !important;
+  }
+  
+  .react-calendar__tile--active {
+    background: #6b46c1 !important;
+    color: white !important;
+  }
+  
+  .react-calendar__tile--now {
+    background: #e0e7ff !important;
+  }
+  
+ /* Hide scrollbar for webkit browsers (e.g., Chrome, Safari) */
+section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Internet Explorer, Edge, and Firefox */
+section {
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}

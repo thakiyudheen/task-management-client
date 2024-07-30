@@ -2,6 +2,10 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import SignupImg from '../../assets/auth/signup.svg';
+import { useAppDispatch } from '../../hooks/hooke';
+import { signupAction } from '../../redux/store/actions/auth/signupUserAction';
+import { useNavigate } from 'react-router-dom';
+import {toast} from 'sonner'
 
 const SignUp = () => {
   const validationSchema = Yup.object({
@@ -18,6 +22,19 @@ const SignUp = () => {
       .oneOf([Yup.ref('password')], 'Passwords must match')
       .required('Required')
   });
+
+  const handleSubmit = async (values:any)=>{
+    const response:any =await dispatch(signupAction(values))
+    console.log(response.payload)
+    if(response.payload&&!response?.payload?.success){
+      toast.error(response?.payload?.message)
+    }else{
+      toast.success('Signup successfully !')
+    }
+
+  }
+  const dispatch = useAppDispatch()
+  const navigate= useNavigate()
 
   return (
 
@@ -42,8 +59,9 @@ const SignUp = () => {
             <Formik
               initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
               validationSchema={validationSchema}
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={async(values, { setSubmitting }) => {
                 console.log('Form Data', values);
+                handleSubmit(values)
                 setSubmitting(false);
               }}
             >
@@ -121,7 +139,7 @@ const SignUp = () => {
                   <div className="text-center">
                     <p className="text-sm text-gray-600">
                       If you have an account,{' '}
-                      <a href="/signin" className="font-medium text-purple-600 hover:text-purple-500">
+                      <a onClick={()=> navigate('/login')}  className="font-medium text-purple-600 hover:text-purple-500">
                         sign in
                       </a>
                     </p>

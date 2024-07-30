@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import SignupImg from '../../assets/auth/signup.svg';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/hooke';
+import { loginAction } from '../../redux/store/actions/auth/loginUserAction';
+import { toast } from 'sonner';
+import LoadingIndicator from '../../component/common/loding/loadingIndicator';
+
 
 const Login = () => {
   const validationSchema = Yup.object({
@@ -14,6 +20,23 @@ const Login = () => {
   
   });
 
+  const dispatch = useAppDispatch()
+  const navigate= useNavigate()
+  const [isLoading,setLoading]=useState<any>(false)
+
+  const handleSubmit = async (value:any)=>{
+    setLoading(true)
+     const response= await dispatch(loginAction(value))
+     if(!response.payload.success){
+      toast.error(response.payload.message||'Network error!')
+      setLoading(false)
+     }else{      
+       toast.success('Logged successfully !')
+       setLoading(false)
+       navigate('/')
+
+      }
+  }
   return (
 
 
@@ -24,7 +47,9 @@ const Login = () => {
           src={SignupImg}
           alt="Sign Up Illustration"
         />
+
         </div>
+        {isLoading&&<LoadingIndicator/>}
         <div className='flex justify-center items-center w-full md:relative top-[9vh]'>
         
         <div className="w-full max-w-md mx-auto lg:w-96 ">
@@ -39,6 +64,7 @@ const Login = () => {
               validationSchema={validationSchema}
               onSubmit={(values, { setSubmitting }) => {
                 console.log('Form Data', values);
+                handleSubmit(values)
                 setSubmitting(false);
               }}
             >
@@ -82,14 +108,14 @@ const Login = () => {
                       disabled={isSubmitting}
                       className="w-full flex justify-center py-2 px-4 border-b border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r to-purple-700 from-purple-800  hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                     >
-                      Sign Up
+                      Login
                     </button>
                   </div>
                   <div className="text-center">
                     <p className="text-sm text-gray-600">
                       If you have an account,{' '}
-                      <a href="/signin" className="font-medium text-purple-600 hover:text-purple-500">
-                        sign in
+                      <a onClick={()=> navigate('/signup')}  className="font-medium text-purple-600 hover:text-purple-500">
+                        sign up 
                       </a>
                     </p>
                   </div>

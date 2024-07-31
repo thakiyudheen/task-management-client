@@ -16,7 +16,7 @@ type Props = {}
 
 export const Tasks = (props: Props) => {
   const {data}= useAppSelector((state:RootState)=> state.user)
-  const [isOpen, setOpen]=useState<boolean>(false)
+  const [isOpen, setOpen]=useState<any>(false)
   const [isLoading,setLoading]=useState<boolean>(false)
   const dispatch = useAppDispatch()
   const [tasks,setTasks]=useState<any>(null)

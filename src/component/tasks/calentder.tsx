@@ -14,7 +14,7 @@ const getCurrentWeekDates = () => {
   return weekDates;
 };
 
-export const TaskManager: React.FC = ({setOpen}:any) => {
+export const TaskManager = ({setOpen}:any) => {
   const weekDates = getCurrentWeekDates();
   const today = new Date();
   const currentMonthYear = today.toLocaleString('default', { month: 'short', year: 'numeric' });

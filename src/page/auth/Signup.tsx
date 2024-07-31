@@ -39,7 +39,7 @@ const SignUp = () => {
   return (
 
 
-    <div className='flex flex-col md:flex-row justify-evenly items-center bg-white  md:p-0 p-7 font-Poppins'>
+    <div className='flex flex-col md:flex-row justify-evenly min-h-screen items-center bg-white  md:p-0 p-7 font-Poppins'>
         <div className='flex justify-center items-center  w-full  mt-[47px]'>
         <img
           className="w-[63vh] max-w-md h-auto object-cover"
@@ -74,7 +74,7 @@ const SignUp = () => {
                     <Field
                       type="text"
                       name="username"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 bg-white placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="username"
@@ -89,7 +89,7 @@ const SignUp = () => {
                     <Field
                       type="email"
                       name="email"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 bg-white placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="email"
@@ -104,7 +104,7 @@ const SignUp = () => {
                     <Field
                       type="password"
                       name="password"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300   focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 bg-white placeholder-gray-400 border-b border-gray-300   focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="password"
@@ -119,7 +119,7 @@ const SignUp = () => {
                     <Field
                       type="password"
                       name="confirmPassword"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 bg-white placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="confirmPassword"

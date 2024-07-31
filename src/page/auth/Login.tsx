@@ -78,7 +78,7 @@ const Login = () => {
                     <Field
                       type="email"
                       name="email"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 placeholder-gray-400 border-b bg-white border-gray-300  focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="email"
@@ -93,7 +93,7 @@ const Login = () => {
                     <Field
                       type="password"
                       name="password"
-                      className="block w-full px-3 py-1 placeholder-gray-400 border-b border-gray-300   focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                      className="block w-full px-3 py-1 placeholder-gray-400 border-b bg-white border-gray-300   focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                     />
                     <ErrorMessage
                       name="password"

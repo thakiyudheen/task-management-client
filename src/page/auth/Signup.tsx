@@ -39,7 +39,7 @@ const SignUp = () => {
   return (
 
 
-    <div className='flex flex-col md:flex-row justify-evenly items-center  md:p-0 p-7 font-Poppins'>
+    <div className='flex flex-col md:flex-row justify-evenly items-center bg-white  md:p-0 p-7 font-Poppins'>
         <div className='flex justify-center items-center  w-full  mt-[47px]'>
         <img
           className="w-[63vh] max-w-md h-auto object-cover"

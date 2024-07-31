@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <div className="bg-gray-200 hidden md:block text-white flex items-center flex-col w-18 rounded-lg p-4">
+    <div className="bg-gray-200 hidden md:block  text-white flex items-center flex-col w-18 rounded-lg p-4">
       <h1 className="text-2xl font-bold mb-4 p-3 text-purple-700"><FaFireAlt /></h1>
       <nav>
         <ul>

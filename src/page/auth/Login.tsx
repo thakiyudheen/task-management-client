@@ -40,8 +40,8 @@ const Login = () => {
   return (
 
 
-    <div className='flex flex-col md:flex-row justify-evenly items-center md:p-0 p-7 font-Poppins'>
-        <div className='flex justify-center items-center  w-full md:relative top-[9vh]'>
+    <div className='flex flex-col md:flex-row md:h-screen justify-evenly bg-white items-center md:p-0 p-7 font-Poppins'>
+        <div className='flex justify-center items-center  w-full md:relative '>
         <img
           className="w-[65vh] max-w-md h-auto object-cover"
           src={SignupImg}
@@ -50,7 +50,7 @@ const Login = () => {
 
         </div>
         {isLoading&&<LoadingIndicator/>}
-        <div className='flex justify-center items-center w-full md:relative top-[9vh]'>
+        <div className='flex justify-center items-center w-full md:relative '>
         
         <div className="w-full max-w-md mx-auto lg:w-96 ">
           <div className="text-center h-auto">

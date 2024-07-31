@@ -4,11 +4,13 @@ import SignUp from './page/auth/Signup'
 import Login from './page/auth/Login'
 import Home from './page/home/Home'
 import { Navigate, Route, Routes } from 'react-router-dom';
-import TaskManager from './component/tasks/calentder'
 import { Tasks } from './page/tasks/tasks'
 import { useAppDispatch, useAppSelector } from './hooks/hooke'
 import { RootState } from './redux/store'
 import { getUserAction } from './redux/store/actions/auth/getUserAction'
+import PrivateRoute from './routes/privateRoutes'
+import PublicRoute from './routes/publicRoutes'
+
 
 function App() {
 const {data}=useAppSelector((state:RootState)=>state.user)
@@ -19,18 +21,23 @@ const dispatch= useAppDispatch()
      const getData = async ()=>{
        await dispatch(getUserAction())
     }
+    getData()
  },[dispatch])
  
-  return (
-  
-     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<SignUp/>} />
-        <Route path="/notes" element={<Tasks/>} />
-      </Routes>
-
-  )
+ return (
+   <Routes>
+     <Route path="/" element={<PrivateRoute />}>
+       <Route path="/" element={<Home />} />
+       <Route path="/notes" element={<Tasks />} />
+     </Route>
+     <Route path="/login" element={<PublicRoute />}>
+        <Route index element={<Login />} />
+      </Route>
+      <Route path="/signup" element={<PublicRoute />}>
+        <Route index element={<SignUp />} />
+      </Route>
+   </Routes>
+ );
 }
 
 export default App

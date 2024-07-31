@@ -4,6 +4,10 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  daisyui: {
+    styled: false,
+    // ...other daisyui config
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -14,5 +18,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('daisyui'),],
+  daisyui: {
+    themes: false,
+  },
 }

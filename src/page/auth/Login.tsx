@@ -40,7 +40,7 @@ const Login = () => {
   return (
 
 
-    <div className='flex flex-col md:flex-row md:h-screen justify-evenly bg-white items-center md:p-0 p-7 font-Poppins'>
+    <div className='flex flex-col md:flex-row h-screen justify-evenly bg-white items-center md:p-0 p-7 font-Poppins'>
         <div className='flex justify-center items-center  w-full md:relative '>
         <img
           className="w-[65vh] max-w-md h-auto object-cover"

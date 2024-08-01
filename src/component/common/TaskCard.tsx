@@ -5,12 +5,13 @@ import { BsClipboardData } from "react-icons/bs";
 interface TaskCardProps {
   title: string;
   progress: any;
+  count:any;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ title, progress }) => {
+const TaskCard: React.FC<TaskCardProps> = ({ title, progress ,count}) => {
   return (
     <>
-      <div className=" bg-gradient-to-l from-purple-500 to-purple-700 md:w-full text-purple-100 p-4  rounded-lg shadow">
+      <div className={`${count%2!=0?'bg-gradient-to-l from-purple-500 to-purple-700':'bg-gradient-to-l from-purple-400 to-purple-400'} md:w-full text-purple-100 p-4  rounded-lg shadow`}>
         <div className="bg-white/20 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
           <BsClipboardData className="text-white text-2xl" />
         </div>

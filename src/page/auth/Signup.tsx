@@ -55,9 +55,9 @@ const SignUp = () => {
         {isLoading&&<LoadingIndicator/>}
         <div className='flex justify-center items-center w-full'>
         
-        <div className="w-full max-w-md mx-auto lg:w-96 ">
+        <div className="w-full max-w-md mx-auto shadow-lg p-10 rounded-lg">
           <div className="text-center h-auto">
-            <h2 className="mt-6 text-3xl font-extrabold text-purple-600">
+            <h2 className="mt-1 text-2xl font-extrabold text-purple-600">
               Sign Up
             </h2>
           </div>
@@ -71,7 +71,7 @@ const SignUp = () => {
               }}
             >
               {({ isSubmitting }) => (
-                <Form className="space-y-3">
+                <Form className="space-y-1">
                   <div>
                     <label className="block text-sm font-medium text-gray-700">
                       Username
@@ -136,7 +136,7 @@ const SignUp = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex justify-center py-2 px-4 border-b border-transparent text-sm font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+                      className="w-full flex mt-3 justify-center py-2 px-4 border-b border-transparent text-sm font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                     >
                       Sign Up
                     </button>

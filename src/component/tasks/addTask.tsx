@@ -141,20 +141,20 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose, onAdd }) =
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center z-50 justify-center p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-white rounded-lg p-8 w-full max-w-md"
+            className="bg-white rounded-lg p-8 w-full max-w-md  "
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
           >
             <div className="flex justify-between items-center mb-4 z-10 ">
-              <h2 className="text-xl font-semibold">Add Task</h2>
+              <h2 className="text-xl text-black font-semibold">Add Task</h2>
               <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
                 &times;
               </button>
@@ -174,7 +174,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose, onAdd }) =
                       type="text"
                       id="task"
                       name="task"
-                      className={`w-full px-3 py-2 border bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      className={`w-full px-3  text-[14px] py-1 border bg-white  rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                         errors.task && touched.task ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -188,7 +188,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose, onAdd }) =
                       type="date"
                       id="date"
                       name="date"
-                      className={`w-full px-3 py-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      className={`w-full text-[14px]  px-3 py-1 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                         errors.date && touched.date ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -196,7 +196,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose, onAdd }) =
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-tr to-purple-600 from-purple-800 text-white py-2 px-4 rounded-md hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="w-full bg-gradient-to-tr to-purple-600 from-purple-800 text-white py-2 px-4 rounded-lg hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
                     Add
                   </button>

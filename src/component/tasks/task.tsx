@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
 import { FaTasks } from 'react-icons/fa';
-import Empty from '../../assets/tasks/emty.png';
 import TasksImg from '../../assets/tasks/taks.svg';
 import { toast } from 'sonner';
+import { CiWarning } from "react-icons/ci";
 
 type TaskType = {
   _id: string;
@@ -104,8 +104,12 @@ export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate, filtere
               </div>
             ))
           ) : (
-            <div className='h-screen md:h-[10vh] flex justify-center md:items-center'>
-              <img src={Empty} alt="No tasks" className='w-[30%] hidden  h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' />
+            <div className='h-screen md:h-[10vh] flex justify-center md:items-center relative '>
+               <div className='flex flex-col absolute md:relative top-[7vh] md:top-[20vh] justify-center items-center'>
+              <CiWarning className='text-[10vh] text-gray-400 -z-9' />
+              <small className='text-gray-400 text-semibold -z-9'>Please Add Tasks</small>
+              </div>
+              {/* <img src={Empty} alt="No tasks" className='w-[30%] hidden  h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' /> */}
             </div>
           )}
         </div>

@@ -14,7 +14,8 @@ import { RootState } from '../../redux/store';
 import { toast } from 'sonner';
 import { deleteTaskAction } from '../../redux/store/actions/tasks/deleteTaskAction';
 import { updateTaskAction } from '../../redux/store/actions/tasks/updateTaskAction';
-import { Tasks } from '../../page/tasks/tasks';
+import { CiWarning } from "react-icons/ci";
+import LoadingIndicator from '../common/loding/loadingIndicator';
 
 
 
@@ -36,11 +37,13 @@ const Dashboard: React.FC = () => {
     const dispatch = useAppDispatch()
     useEffect(()=>{
         const getTask =async ()=>{
-         const response= await dispatch(getTaskAction({userId:data._id}))
-         console.log('the fretched data',response);
-         if(response.payload.success){
-           setTasks(response.payload.data)
-           setFilter(response.payload.data)
+          setLoading(true)
+          const response= await dispatch(getTaskAction({userId:data._id}))
+          console.log('the fretched data',response);
+          if(response.payload.success){
+            setTasks(response.payload.data)
+            setFilter(response.payload.data)
+            setLoading(false)
          }
         }
         getTask()
@@ -103,6 +106,7 @@ const Dashboard: React.FC = () => {
         setLoading(true)
         await dispatch(deleteTaskAction(data))
         setTasks(((pre:any)=> pre.filter((el:any)=>el._id!=data)))
+        setFilter(((pre:any)=> pre.filter((el:any)=>el._id!=data)))
         setLoading(false)
         toast.success('Task deleted successfully!')
       } 
@@ -117,6 +121,9 @@ const Dashboard: React.FC = () => {
           setTasks((prev: any) => prev.map((el: any) => 
             el._id === data._id ? { ...el, completionStatus: true } : el
           ));
+          setFilter((prev: any) => prev.map((el: any) => 
+            el._id === data._id ? { ...el, completionStatus: true } : el
+          ))
           
           toast.success('Task updated successfully!');
         } catch (error) {
@@ -132,17 +139,18 @@ const Dashboard: React.FC = () => {
 
     return (
         <div className="flex-1 p-4 w-full">
+          {isLoading&& <LoadingIndicator/>}
            <Navbar/>    
             <section className='p-5'>
-                <h1 className='text-3xl text-black'>Hello {data.username}!</h1>
+                <h1 className='text-2xl  md:text-2xl text-black'>Hello {data.username.split('').slice(0,12).join('')}..!</h1>
                 <p className='text-black'>Have a nice day..</p>
 
             </section>
 
             <section className="md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6   hidden">
-                <TaskCard title="Totel Tasks" progress={taskes.length} />
-                <TaskCard title="Todays tasks" progress={todays} />
-                <TaskCard title="Pending Tasks" progress={Pending} />
+                <TaskCard title="Totel Tasks" progress={taskes.length} count={1} />
+                <TaskCard title="Todays tasks" progress={todays} count={2} />
+                <TaskCard title="Pending Tasks" progress={Pending} count={3} />
             </section>
 
 
@@ -168,9 +176,9 @@ const Dashboard: React.FC = () => {
                 className="flex mb-2 overflow-x-scroll space-x-2 md:hidden mt-[4%] p-2 snap-x snap-mandatory
              scrollbar-hide"
             >
-               <TaskCard title="Totel Tasks" progress={taskes.length} />
-                <TaskCard title="Todays tasks" progress={todays} />
-                <TaskCard title="Pending Tasks" progress={Pending} />
+               <TaskCard title="Totel Tasks" progress={taskes.length} count={1} />
+                <TaskCard title="Todays tasks" progress={todays} count={2} />
+                <TaskCard title="Pending Tasks" progress={Pending} count={3} />
             </section>
             <div className="flex justify-center md:hidden">
                 {[0, 1].map((index) => (
@@ -190,7 +198,7 @@ const Dashboard: React.FC = () => {
                     {taskes.length > 0 ? (
             filteredTask?.slice(0,3).map((task:any) => (
               <div key={task._id} className="bg-white rounded-lg shadow-md p-4 mb-3 flex items-center">
-                <div className="bg-purple-600 p-2 rounded-lg mr-4">
+                <div className="bg-gradient-to-t to-purple-500 from-purple-600 p-2 rounded-lg mr-4">
                   <FaTasks className="text-white text-xl" />
                 </div>
                 <div className="flex-grow">
@@ -213,8 +221,14 @@ const Dashboard: React.FC = () => {
               </div>
             ))
           ) : (
-            <div className='h-screen md:h-[10vh] flex justify-center md:items-center'>
-              <img src={Empty} alt="No tasks" className='w-[30%] hidden md:block h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' />
+            <div className=' md:h-[10vh] relative top-[3vh] md:top-[15vh]  flex justify-center md:items-center'>
+              
+              <div className='flex flex-col justify-center items-center'>
+              <CiWarning className='text-[10vh] text-gray-400' />
+              <small className='text-gray-400 text-semibold'>Please Add Tasks</small>
+              </div>
+
+              {/* <img src={Empty} alt="No tasks" className='w-[30%] hidden md:block h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' /> */}
             </div>
           )}
                     </div>

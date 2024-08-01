@@ -40,25 +40,26 @@ const Login = () => {
   return (
 
 
-    <div className='flex flex-col md:flex-row h-screen justify-evenly bg-white items-center md:p-0 p-7 font-Poppins'>
+    <div className='flex flex-col md:flex-row h-screen justify-evenly bg-white  items-center md:p-0 p-7 font-Poppins'>
         <div className='flex justify-center items-center  w-full md:relative '>
         <img
-          className="w-[65vh] hidden md:block max-w-md h-auto object-cover"
+          className="w-[65vh] hidden 
+          md:block max-w-md h-auto object-cover"
           src={SignupImg}
           alt="Sign Up Illustration"
         />
 
         </div>
         {isLoading&&<LoadingIndicator/>}
-        <div className='flex justify-center items-center w-full md:relative '>
+        <div className='flex justify-center  items-center w-full md:relative '>
         
-        <div className="w-full max-w-md mx-auto lg:w-96 ">
+        <div className="w-full max-w-md mx-auto  shadow-lg rounded-lg p-10 ">
           <div className="text-center h-auto">
-            <h2 className="mt-6 text-3xl font-extrabold text-purple-600">
+            <h2 className="mt-3 text-2xl font-extrabold text-purple-600">
               Sign in
             </h2>
           </div>
-          <div className="mt-8">
+          <div className="mt-3">
             <Formik
               initialValues={{  email: '', password: '' }}
               validationSchema={validationSchema}
@@ -69,7 +70,7 @@ const Login = () => {
               }}
             >
               {({ isSubmitting }) => (
-                <Form className="space-y-3">
+                <Form className="space-y-2">
                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700">

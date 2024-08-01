@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooke';
 import { RootState } from '../../redux/store';
 import { useNavigate } from 'react-router-dom';
 import { logoutAction } from '../../redux/store/actions/auth/logoutAction';
+import { IoMdLogOut } from "react-icons/io";
 
 type Props = {}
 
@@ -42,8 +43,8 @@ export const Navbar: React.FC = (props: Props) => {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className=" m-1"><FaUserCircle className='text-[4vh] text-gray-500' /></div>
 
-            <ul tabIndex={0} className="dropdown-content menu absolute bg-gray-200 text-black rounded-box z-[1] w-52 p-2 shadow-lg">
-              <li onClick={() => handlelogout()} className='text-[red]'><a>logout</a></li>
+            <ul tabIndex={0} className="dropdown-content menu absolute bg-gray-100 text-black rounded-box z-[1] w-52 p-2 shadow-lg">
+              <li onClick={() => handlelogout()} className='text-[red]'><a><IoMdLogOut /> &nbsp; logout</a></li>
             </ul>
           </div>
         </div>

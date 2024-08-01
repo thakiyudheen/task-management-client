@@ -10,6 +10,7 @@ import { RootState } from './redux/store'
 import { getUserAction } from './redux/store/actions/auth/getUserAction'
 import PrivateRoute from './routes/privateRoutes'
 import PublicRoute from './routes/publicRoutes'
+import Errors from './component/common/error/errors'
 
 
 function App() {
@@ -36,6 +37,7 @@ const dispatch= useAppDispatch()
       <Route path="/signup" element={<PublicRoute />}>
         <Route index element={<SignUp />} />
       </Route>
+      <Route path='*' element={<Errors/>} />
    </Routes>
  );
 }

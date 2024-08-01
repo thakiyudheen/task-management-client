@@ -2,27 +2,40 @@
 .react-calendar {
     border: none !important;
     box-shadow: none !important;
+    padding: 2px;
   }
-  
+  .react-calendar__month-view__weekdays__weekday{
+    color: gray  !important; 
+    border: none !important;
+    padding: 5px !important;
+
+  }
   .react-calendar__tile {
     background: none !important;
     padding: 2vh !important; 
     color: black !important; 
+    
 
   }
   
   .react-calendar__navigation button {
-    background: none !important;
-    border: none !important;
+    background: white !important;
+    border: 2px  !important;
+    border-radius: 10px;
+  
+    color: black;
   }
   
   .react-calendar__tile--active {
-    background: #6b46c1 !important;
+    background: #464549 !important;
     color: white !important;
+    border-radius: 10px;
   }
   
   .react-calendar__tile--now {
-    background: #e0e7ff !important;
+    background: #a31cf1 !important;
+    color: white !important;
+    border-radius: 10px;
   }
   
  /* Hide scrollbar for webkit browsers (e.g., Chrome, Safari) */

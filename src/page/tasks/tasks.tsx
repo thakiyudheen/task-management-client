@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { getTaskAction } from '../../redux/store/actions/tasks/getTaskAction'
 import { deleteTaskAction } from '../../redux/store/actions/tasks/deleteTaskAction'
 import { updateTaskAction } from '../../redux/store/actions/tasks/updateTaskAction'
+import LoadingIndicator from '../../component/common/loding/loadingIndicator'
 
 type Props = {}
 
@@ -21,6 +22,7 @@ export const Tasks = (props: Props) => {
   const dispatch = useAppDispatch()
   const [tasks,setTasks]=useState<any>(null)
   const [filteredTasks, setFilteredTasks] = useState<any>([]);
+
   const isClose:any = () =>{
      setOpen(false)
   }
@@ -30,11 +32,12 @@ export const Tasks = (props: Props) => {
     datas.userId=data._id
     console.log('the add data',data)
     console.log(data);
-    
+    setLoading(true)
     const response = await dispatch(createTaskAction(datas))
     if(response.payload.success){
       setTasks((pretask:any)=> [...pretask,datas])
       setFilteredTasks((pretask:any)=> [...pretask,datas])
+      setLoading(false)
       toast.success('Added successfully!')
     }
 
@@ -87,11 +90,13 @@ export const Tasks = (props: Props) => {
   };
   useEffect(()=>{
      const getTask =async ()=>{
+      setLoading(true)
       const response= await dispatch(getTaskAction({userId:data._id}))
       console.log('the fretched data',response);
       if(response.payload.success){
         setTasks(response.payload.data)
         setFilteredTasks(response.payload.data)
+        setLoading(false)
       }
      }
      getTask()
@@ -100,6 +105,7 @@ export const Tasks = (props: Props) => {
   return (
     <div className="flex  w-full justify-start min-h-screen  font-Poppins md:p-4 bg-white">
       <Sidebar />
+      {isLoading&&<LoadingIndicator/>}
       <div className='flex flex-col w-full'>
       <AddTaskModal isOpen={isOpen} onClose={isClose} onAdd={onAdd}/>
       <TaskManager setOpen={setOpen}/>

@@ -20,6 +20,7 @@ export const Tasks = (props: Props) => {
   const [isLoading,setLoading]=useState<boolean>(false)
   const dispatch = useAppDispatch()
   const [tasks,setTasks]=useState<any>(null)
+  const [filteredTasks, setFilteredTasks] = useState<any>([]);
   const isClose:any = () =>{
      setOpen(false)
   }
@@ -56,6 +57,7 @@ export const Tasks = (props: Props) => {
     setLoading(true)
     await dispatch(deleteTaskAction(data))
     setTasks(((pre:any)=> pre.filter((el:any)=>el._id!=data)))
+    setFilteredTasks(((pre:any)=> pre.filter((el:any)=>el._id!=data)))
     setLoading(false)
     toast.success('Task deleted successfully!')
   } 
@@ -70,6 +72,9 @@ export const Tasks = (props: Props) => {
       setTasks((prev: any) => prev.map((el: any) => 
         el._id === data._id ? { ...el, completionStatus: true } : el
       ));
+      setFilteredTasks((prev: any) => prev.map((el: any) => 
+        el._id === data._id ? { ...el, completionStatus: true } : el
+      ))
       
       toast.success('Task updated successfully!');
     } catch (error) {
@@ -85,6 +90,7 @@ export const Tasks = (props: Props) => {
       console.log('the fretched data',response);
       if(response.payload.success){
         setTasks(response.payload.data)
+        setFilteredTasks(response.payload.data)
       }
      }
      getTask()
@@ -96,7 +102,10 @@ export const Tasks = (props: Props) => {
       <div className='flex flex-col w-full'>
       <AddTaskModal isOpen={isOpen} onClose={isClose} onAdd={onAdd}/>
       <TaskManager setOpen={setOpen}/>
-      <Task tasks={tasks} handleDelete={handleDelete } handleUpdate={handleUpdate}  />
+      <Task tasks={tasks} handleDelete={handleDelete } handleUpdate={handleUpdate}
+      setFilteredTasks={setFilteredTasks}
+      filteredTasks={filteredTasks}
+      />
       </div>
       <BottomNav />
       

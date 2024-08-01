@@ -153,7 +153,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose, onAdd }) =
             exit={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex justify-between items-center mb-4 z-10 absolute">
+            <div className="flex justify-between items-center mb-4 z-10 ">
               <h2 className="text-xl font-semibold">Add Task</h2>
               <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
                 &times;

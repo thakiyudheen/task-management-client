@@ -102,7 +102,7 @@ export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate ,filtere
             ))
           ) : (
             <div className='h-screen md:h-[10vh] flex justify-center md:items-center'>
-              <img src={Empty} alt="No tasks" className='w-[30%] hidden md:block h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' />
+              <img src={Empty} alt="No tasks" className='w-[30%] hidden  h-[10%] md:w-[10%] md:h-[100%] relative md:top-[20vh] top-[10%]' />
             </div>
           )}
         </div>

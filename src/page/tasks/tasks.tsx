@@ -91,7 +91,7 @@ export const Tasks = (props: Props) => {
   },[dispatch])
 
   return (
-    <div className="flex  w-full justify-start  font-Poppins md:p-4 bg-white">
+    <div className="flex  w-full justify-start min-h-screen  font-Poppins md:p-4 bg-white">
       <Sidebar />
       <div className='flex flex-col w-full'>
       <AddTaskModal isOpen={isOpen} onClose={isClose} onAdd={onAdd}/>

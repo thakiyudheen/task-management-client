@@ -4,10 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  daisyui: {
-    styled: false,
-    // ...other daisyui config
-  },
+ 
+    daisyui: {
+      styled: false,
+      themes: false, // Disable DaisyUI themes
+    },
+
   theme: {
     extend: {
       fontFamily: {

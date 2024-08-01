@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IoMdHome } from "react-icons/io";
-import { SlCalender } from "react-icons/sl";
 import { IoIosNotifications } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { CiCalendarDate } from "react-icons/ci";
@@ -22,20 +21,12 @@ const BottomNav: React.FC = () => {
         {navItems.map((item, index) => (
           <li key={index}>
             <Link to={item.path} className="flex flex-col items-center">
-              <item.icon 
-                className={`text-2xl ${
-                  location.pathname === item.path 
-                    ? 'text-[#8215bb]' 
+              <item.icon
+                className={`text-2xl ${location.pathname === item.path
+                    ? 'text-[#8215bb]'
                     : 'text-gray-400'
-                }`} 
+                  }`}
               />
-              {/* <span className={`text-xs mt-1 ${
-                location.pathname === item.path 
-                  ? 'text-purple-700' 
-                  : 'text-gray-400'
-              }`}>
-                {item.path === '/' ? 'Home' : item.path.slice(1)}
-              </span> */}
             </Link>
           </li>
         ))}

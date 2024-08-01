@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { signupAction } from "../actions/auth/signupUserAction";
 import { loginAction } from "../actions/auth/loginUserAction";
 import { getUserAction } from "../actions/auth/getUserAction";
+import { logoutAction } from "../actions/auth/logoutAction";
 
 export interface UserState {
     loading: boolean;
@@ -75,6 +76,23 @@ const userSlice = createSlice({
             state.data =null ;
             state.error = action.error.message || 'get user filed';
         })
+
+         // handle logout ---------------------------------------------
+         .addCase(logoutAction.pending , (state : UserState) =>{
+            state.loading = true;
+            state.error = null;
+        })
+        .addCase(logoutAction.fulfilled , (state : UserState , action ) =>{
+            state.loading = false;
+            state.data = null;
+            state.error = null;
+        })
+        .addCase(logoutAction.rejected,(state : UserState , action ) =>{
+            state.loading = true ; 
+            state.data =null ;
+            state.error = action.error.message || 'logout failed';
+        })
+
     }
 
         

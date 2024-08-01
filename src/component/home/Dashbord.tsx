@@ -168,9 +168,9 @@ const Dashboard: React.FC = () => {
                 className="flex mb-2 overflow-x-scroll space-x-2 md:hidden mt-[4%] p-2 snap-x snap-mandatory
              scrollbar-hide"
             >
-                <TaskCard title="Today task" progress="In Progress" />
-                <TaskCard title="Completed tasks" progress="Completed" />
-                <TaskCard title="Pending Tasks" progress="Pending" />
+               <TaskCard title="Totel Tasks" progress={taskes.length} />
+                <TaskCard title="Todays tasks" progress={todays} />
+                <TaskCard title="Pending Tasks" progress={Pending} />
             </section>
             <div className="flex justify-center md:hidden">
                 {[0, 1].map((index) => (
@@ -206,7 +206,7 @@ const Dashboard: React.FC = () => {
                       ):(
                         <li onClick={() => handleUpdate(task._id)}><a>Complete</a></li>
                       )}
-                      <li onClick={() => handleDelete(task._id)}><a>Delete</a></li>
+                      <li className='text-[red]' onClick={() => handleDelete(task._id)}><a>Delete</a></li>
                     </ul>
                   </div>
                 </div>

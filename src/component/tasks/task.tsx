@@ -91,14 +91,14 @@ export const Task: React.FC<Props> = ({ tasks, handleDelete, handleUpdate }) => 
                   <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="m-1">⋮</div>
                     <ul tabIndex={0} className="dropdown-content menu absolute bg-gray-100 text-black rounded-box z-[1] w-52 p-2 shadow-lg">
-                     
-                      {task?.completionStatus?(
-                        <li onClick={()=>toast.info('You already completed!')}><a>completed</a></li>
-                      ):(
+
+                      {task?.completionStatus ? (
+                        <li onClick={() => toast.info('You already completed!')}><a>completed</a></li>
+                      ) : (
                         <li onClick={() => handleUpdate(task._id)}><a>Complete</a></li>
                       )}
-                      
-                      <li onClick={() => handleDelete(task._id)}><a>Delete</a></li>
+
+                      <li className='text-[red]' onClick={() => handleDelete(task._id)}><a>Delete</a></li>
                     </ul>
                   </div>
                 </div>

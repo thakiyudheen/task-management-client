@@ -34,6 +34,7 @@ export const Tasks = (props: Props) => {
     const response = await dispatch(createTaskAction(datas))
     if(response.payload.success){
       setTasks((pretask:any)=> [...pretask,datas])
+      setFilteredTasks((pretask:any)=> [...pretask,datas])
       toast.success('Added successfully!')
     }
 

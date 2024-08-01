@@ -11,7 +11,7 @@ export const logoutAction = createAsyncThunk(
     async ( _,{ rejectWithValue }) => {
         try {
 
-            const response = await api_client.get(`${auth}/logout`,
+            const response = await api_client.delete(`${auth}/logout`,
             config
             )
 

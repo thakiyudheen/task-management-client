@@ -14,7 +14,7 @@ type TaskType = {
 
 
 
-export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate ,filteredTasks,setFilteredTasks}) => {
+export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate, filteredTasks, setFilteredTasks }) => {
 
   const [isFirst, setIsFirst] = useState<boolean>(false);
 
@@ -24,14 +24,17 @@ export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate ,filtere
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         setFilteredTasks(
-          tasks.filter((task:any) => new Date(task.date).setHours(0, 0, 0, 0) === today.getTime())
+          tasks.filter((task: any) => new Date(task.date).setHours(0, 0, 0, 0) === today.getTime())
         );
         break;
       case 'completed':
-        setFilteredTasks(tasks.filter((task:any) => task.completionStatus === true));
+        
+        
+        setFilteredTasks(tasks.filter((task: any) => task.completionStatus === true));
+        console.log('the completeddata',filterTasks);
         break;
       case 'in-progress':
-        setFilteredTasks(tasks.filter((task:any) => task.completionStatus === false));
+        setFilteredTasks(tasks.filter((task: any) => task.completionStatus === false));
         break;
       default:
         setFilteredTasks(tasks);
@@ -74,7 +77,7 @@ export const Task: React.FC<any> = ({ tasks, handleDelete, handleUpdate ,filtere
 
         <div className='flex-grow'>
           {filteredTasks.length > 0 ? (
-            filteredTasks.map((task:any) => (
+            filteredTasks.map((task: any) => (
               <div key={task._id} className="bg-white rounded-lg shadow-md p-4 mb-3 flex items-center">
                 <div className="bg-purple-600 p-2 rounded-lg mr-4">
                   <FaTasks className="text-white text-xl" />

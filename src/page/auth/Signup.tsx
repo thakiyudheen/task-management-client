@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import SignupImg from '../../assets/auth/signup.svg';
@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../hooks/hooke';
 import { signupAction } from '../../redux/store/actions/auth/signupUserAction';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'sonner'
+import LoadingIndicator from '../../component/common/loding/loadingIndicator';
 
 const SignUp = () => {
   const validationSchema = Yup.object({
@@ -22,13 +23,17 @@ const SignUp = () => {
       .oneOf([Yup.ref('password')], 'Passwords must match')
       .required('Required')
   });
+  const  [isLoading,setLoading]= useState<boolean>(false)
 
   const handleSubmit = async (values:any)=>{
+     setLoading(true)
     const response:any =await dispatch(signupAction(values))
     console.log(response.payload)
     if(response.payload&&!response?.payload?.success){
       toast.error(response?.payload?.message)
+      setLoading(false)
     }else{
+      setLoading(false)
       toast.success('Signup successfully !')
     }
 
@@ -47,6 +52,7 @@ const SignUp = () => {
           alt="Sign Up Illustration"
         />
         </div>
+        {isLoading&&<LoadingIndicator/>}
         <div className='flex justify-center items-center w-full'>
         
         <div className="w-full max-w-md mx-auto lg:w-96 ">
@@ -60,7 +66,6 @@ const SignUp = () => {
               initialValues={{ username: '', email: '', password: '', confirmPassword: '' }}
               validationSchema={validationSchema}
               onSubmit={async(values, { setSubmitting }) => {
-                console.log('Form Data', values);
                 handleSubmit(values)
                 setSubmitting(false);
               }}

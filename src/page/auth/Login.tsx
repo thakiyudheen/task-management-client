@@ -43,7 +43,7 @@ const Login = () => {
     <div className='flex flex-col md:flex-row h-screen justify-evenly bg-white  items-center md:p-0 p-7 font-Poppins'>
         <div className='flex justify-center items-center  w-full md:relative '>
         <img
-          className="w-[65vh] hidden 
+          className="w-[65vh] 
           md:block max-w-md h-auto object-cover"
           src={SignupImg}
           alt="Sign Up Illustration"
